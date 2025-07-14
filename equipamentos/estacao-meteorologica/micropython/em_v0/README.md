@@ -7,7 +7,7 @@
 Sensores instalados:
 
 1. **Sensor DHT11:** O sensor está conectado na GPIO 23 da ESP32 e fornece leituras de temperatura e umidade. O módulo utilizado é integrado à linguagem.
-1. **Sensor BME280:** O sensor usa o protocolo serial I2C para comunicação com a ESP32, está conectado nas GPIOs 22 (SCL) e 21 (SDA). Ele opera medindo temperatura, umidade e pressão. O módulo utilizado pode ser encontrado [aqui](https://github.com/kevbu/micropython-bme280/tree/master).
+1. **Sensor BMP280:** O sensor usa o protocolo serial I2C para comunicação com a ESP32, está conectado nas GPIOs 22 (SCL) e 21 (SDA). Ele opera medindo temperatura e pressão. O módulo utilizado pode ser encontrado [aqui](https://github.com/PaszaVonPomiot/micropython-driver-bmp280).
 1. **Sensor MQ7:** Este sensor oferece 2 tipos de conexão: digital e análogica, como o projeto pretende obter valores, ele está conectado na GPIO 36 (Somente leitura, com ADC presente). Ele fornece a concentração de Monoxido de Carbono presente no ar em PPM (partículas por milhão). O módulo utilizado pode ser encontrado [aqui](https://github.com/kartun83/micropython-MQ/tree/master).
 1. **RTC DS3231:** Este módulo também utiliza I2C para comunicação com a ESP32, está conectado nas GPIOs 5 (SCL) e 4 (SDA). Ele opera como um relógio em tempo real, marcando o tempo mesmo se a ESP32 fique sem energia usando uma bateria CR2032. O módulo utilizado pode ser encontrado [aqui](https://github.com/pangopi/micropython-DS3231-AT24C32).
 1. **Sensor DS18B20:** Este sensor utiliza o protocolo OneWire para comunicação com a ESP32, enviando os dados coletador de forma digital. Ele está conectado na GPIO 2 da ESP32. Ele é capaz de medir temperaturas entre -55°C e 125°C com precisão informada de 0,5°C. O módulo utilizado é integrado à linguagem MicroPython.
@@ -37,18 +37,18 @@ Este é o modelo usado para tramissão dos dados:
 |-|-|-|-|
 | 1º| `dht11_temp`| °C| Temperatura ambiente medida pelo sensor DHT11|
 | 2º| `dht11_umid`| %| Umidade relativa do ar medida pelo sensor DHT11|
-| 3º| `bme280_temp`| °C| Temperatura ambiente medida pelo sensor BME280|
-| 4º| `bme280_umid`| %| Umidade relativa do ar medida pelo sensor BME280|
-| 5º| `bme280_press`| hPa| Pressão atmosférica medida pelo sensor BME280|
-| 6º| `ds18b20_temp`| °C| Temperatura medida pelo sensor DS18B20|
-| 7º| `mq7_co`| ppm| Concentração de monóxido de carbono (CO) detectada  |
-| 8º| `mq4_ch4`| ppm| Concentração de metano, Gás Natural ou GLP detectada   |
-| 9º| `sensor_chuva`| sem unidade |Detecção de água no sensor de chuva|
+| 3º| `bmp280_temp`| °C| Temperatura ambiente medida pelo sensor BMP280|
+| 4º| `bmp280_press`| hPa| Pressão atmosférica medida pelo sensor BMP280|
+| 5º| `ds18b20_temp`| °C| Temperatura medida pelo sensor DS18B20|
+| 6º| `mq7_co`| ppm| Concentração de monóxido de carbono (CO) detectada  |
+| 7º| `mq4_ch4`| ppm| Concentração de metano, Gás Natural ou GLP detectada   |
+| 8º| `sensor_chuva`| sem unidade |Detecção de água no sensor de chuva|
 |X|`timestamp`|ns|Timestamp UNIX em ns medindo o tempo no momento da leitura|
 
 - Os dados estão sendo enviados via MQTT para o broker da feira de jogos.
 - A versão 0 já está pronta e rodando.
 - O GPS instalado fornece dados de altitude, longitude e latitude **que não são totalmente confiáveis**.
+- Os dados de GPS só são atualizados caso haja mudança de mais de 500m, e são armazenados em arquivo `.json`.
 - Os dados sensíveis marcados no código com `dotenv.` são armazenados no arquivo `config.env`.
 - Para identificação das mensagens enviadas e das estações ativas será usado o sistema de `UUIDs`, o [arquivo](./uuids_v0.md) contém os IDs.
 
