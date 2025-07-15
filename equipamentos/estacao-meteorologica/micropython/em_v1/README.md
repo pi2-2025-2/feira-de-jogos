@@ -13,16 +13,16 @@
 - [x] SHT35
 - [x] SHT85
 - [x] STH31
-- [ ] HTU21D
+- [X] HTU21D
 - [x] ATH25
 - [x] LM35
 - [x] LM35DZ
 - [x] MCP9808
 - [x] DHT22
-- [ ] BMP280
-- [ ] BME280
-- [ ] TMP36
+- [X] BMP280
+- [X] BME280
 
+---
 # SHT31-DIS - Sensor Digital de Temperatura e Umidade
 
 ### Informações Gerais:
@@ -299,3 +299,99 @@
 - Temperatura: 5 a 30 segundos (1/e 63%)
 
 ---
+# HTU21D - Sensor Digital de Temperatura e Umidade
+
+### Informações Gerais:
+- Interface: I2C (até 400 kHz).
+### Temperatura:
+- Faixa: -40°C a 125°C
+- Precisão:±0,3°C (typ.) e ±1,6 °C (máx.)
+- Resolução: 12 (0,04ºC) a 14 bits (0,01ºC)
+### Umidade Relativa:
+- Faixa: 0% a 100%
+- Precisão: ±2% (typ.) e ±5% (máx.)
+- Resolução configurável: 8 (0,7%) a 12 (0,04%) bits
+- Deriva de longo prazo: ±0,5%/ano
+### Tipos de Encapsulamento:
+- **DFN**
+### Características Elétricas:
+- Tensão de operação: 1,5V a 3,6V
+- Consumo de corrente (Ativo):  450µA (typ.) e 500µA (máx.)
+- Consumo de corrente (Standby): 0,02µA (typ.) e 0,14µA (máx.)
+### Tempo de Resposta:
+- Tempo de conversão (umidade): 16ms (resolução máxima)
+- Tempo de conversão (temperatura): 50ms (resolução máxima)
+
+---
+# BMP280 - Sensor Digital de Temperatura e Pressão
+
+### Informações Gerais:
+- Interface: I2C (clock máximo de 3,4 MHz)
+- Interface SPI (3 e 4 fios, clock máximo de 10 MHz)
+### Temperatura:
+- Faixa: -40°C a 85°C
+- Precisão: ±0.5°C (typ.) e ±1,0°C (máx.)
+- Resolução: 0.01ºC (podendo chegar a *0.0003 °C*)
+### Pressão:
+- Faixa: 300hPa a 1100hPa
+- Precisão: ±1.0hPa (typ.) e ±1.7hPa (máx.)
+- Resolução: 0.0016hPa (podendo chegar a *0.16Pa*)
+- Deriva de longo prazo: 1,0hPa/ano
+### Tipos de Encapsulamento:
+- ***8-pin metal-lid LGA***
+### Características Elétricas:
+- Tensão de operação: 1,71V a 3,6V
+- Consumo de corrente (Ativo):  720µA (typ.) e 1,12mA (máx)
+- Consumo de corrente (Standby): 0,1µA (typ.) e 0,3µA (máx.)
+### Tempo de Resposta:
+- Tempo de medição: 5,5ms (menor resolução), 43,2ms (maior resolução)
+
+---
+# BME280 - Sensor Digital de Temperatura, Umidade e Pressão
+
+### Informações Gerais:
+- Interface: I2C (clock máximo de 3,4 MHz)
+- Interface SPI (3 e 4 fios, clock máximo de 10 MHz)
+### Temperatura:
+- Faixa: -40°C a 85°C
+- Precisão: ±0.5°C (typ.) e ±1,5°C (máx.)
+- Resolução: 0.01ºC
+### Umidade Relativa:
+- Faixa: 0% a 100%
+- Precisão: ±3% (20-80%, 25 °C, typ.)
+- Resolução configurável: 0.008%
+- Deriva de longo prazo: ±0,5%/ano
+### Pressão:
+- Faixa: 300hPa a 1100hPa
+- Precisão: ±1.0hPa (typ.) e ±1.7hPa (máx.)
+- Resolução: 0.18Pa
+- Deriva de longo prazo: 1,0hPa/ano
+### Tipos de Encapsulamento:
+- ***8-pin metal-lid LGA***
+### Características Elétricas:
+- Tensão de operação: 1,71V a 3,6V
+- Consumo de corrente (Ativo, Pressão):  714µA
+- Consumo de corrente (Ativo, Umidade):  340µA
+- Consumo de corrente (Ativo, Temperatura):  350µA
+- Consumo de corrente (Standby): 0,1µA (typ.) e 0,3µA (máx.)
+### Tempo de Resposta:
+-  Tempo de resposta: 1,5ms para I2C em 400 kHz.
+
+---
+## Tabela dos Sensores de Temperatura:
+| Sensor        | Faixa (°C) | Precisão (typ./máx.) | Resolução         | Deriva Longo Prazo | Encapsulamento                | Consumo Standby | Consumo Ativo  | Interface         | Tempo de Resposta     |
+| ------------- | ---------- | -------------------- | ----------------- | ------------------ | ----------------------------- | --------------- | -------------- | ----------------- | --------------------- |
+| **SHT31-DIS** | -40 a 125  | ±0.2°C / ±0.7°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA   | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        |
+| **SHT35-DIS** | -40 a 125  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA   | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        |
+| **SHT85**     | -40 a 105  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | IP67 + membrana               | 0,2µA / 12µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        |
+| **LM75**      | -55 a 125  | ±2.0°C / ±3.0°C      | 0.5°C (9 bits)    | —                  | SOP-8 / MSOP-8                |  4µA / 6µA    | 250µA / 1mA    | I2C (100 kHz)     | ~100 ms conversão     |
+| **DS18B20**   | -55 a 125  | ±0.5°C / ±2.0°C      | Até 0.0625°C      | —                  | TO-92 / SOIC-8 / prova d'água |  0,75µA / 1µA   | 1.0mA / 1.5mA  | 1-Wire            | ~750 ms (12 bits)     |
+| **LM35**      | -55 a 150  | ±0.4°C / ±1.5°C      | ~0.08°C (ADC 12b) | ±0,3°C / ±0,5°C    | TO-46 / TO-92 / TO-220        |  —   | 56µA / 161µA   | Analógica         | Quase instantâneo     |
+| **LM35DZ**    | 0 a 100    | ±0.6°C / ±2.0°C      | ~0.08°C (ADC 12b) | ±0,2°C / ±0,5°C    | TO-46 / TO-92 / TO-220        |    —             | 56µA / 141µA   | Analógica         | Quase instantâneo     |
+| **DHT11**     | 0 a 50     | ±1.0°C / ±2.0°C      | 1°C (8 bits)      | —                  | 4 pinos                       |  100µA / 150µA        | 0.5mA / 2.5mA  | Serial (~10 kbps) | 6 a 30 s (1/e 63%)    |
+| **DHT22**     | -40 a 80   | <±0.5°C              | 0.1°C             | —                  | 4 pinos                       |   40µA / 50µA	              | 1.0mA / 1.5mA  | Serial (~8 kbps)  | ~2 s                  |
+| **MCP9808**   | -40 a 125  | ±0.25°C / ±1.0°C     | Até 0.0625°C      | —                  | DFN / MSOP-8                  |    0,1µA / 2µA             | 200µA / 400µA  | I2C (400 kHz)     | 30–250 ms (dep. bits) |
+| **ATH25**     | -40 a 80   | ±0.3°C / ±2.0°C      | 0.01°C            | ±0.1°C/ano         | SMD 4 pinos                   |    250nA             | 980µA          | I2C (100 kHz)     | 5 a 30 s (1/e 63%)    |
+| **HTU21D**    | -40 a 125  | ±0.3°C / ±1.6°C      | Até 0.01°C        | —                  | DFN                           |    0,02µA / 0,14µA      | 450µA / 500µA  | I2C (400 kHz)     | ~50 ms (res. máx.)    |
+| **BMP280**    | -40 a 85   | ±0.5°C / ±1.0°C      | Até 0.0003°C      | —                  | LGA (metal-lid)               |   0,1µA / 0,3µA       | 720µA / 1.12mA | I2C / SPI         | 5.5–43.2 ms (modos)   |
+| **BME280**    | -40 a 85   | ±0.5°C / ±1.5°C      | 0.01°C            | —                  | LGA (metal-lid)               |  0,1µA / 0,3µA   | 340–714µA      | I2C / SPI         | ~1.5 ms (I2C)         |
