@@ -3,26 +3,16 @@
 ### Objetivo:
 - Aprimorar a versão 0 com sensores melhores para garantir mais qualidade e confiabilidade dos dados coletados.
 - Adicionar os sensores requisitados que não foram instalados na v0.
+---
+### Bibliotecas utilizadas para os testes:
+
+[SD](https://github.com/avovk1/micropython_sdcard/blob/main/sdcard.py)
+[ATHx0](https://github.com/targetblank/micropython_ahtx0/blob/master/ahtx0.py)
+[BMP280](https://github.com/PaszaVonPomiot/micropython-driver-bmp280)
 
 ---
+# Sensores Pesquisados:
 
-# Temperatura:
-- [x] LM75
-- [x] DHT11
-- [x] DS18B20
-- [x] SHT35
-- [x] SHT85
-- [x] STH31
-- [X] HTU21D
-- [x] ATH25
-- [x] LM35
-- [x] LM35DZ
-- [x] MCP9808
-- [x] DHT22
-- [X] BMP280
-- [X] BME280
-
----
 # SHT31-DIS - Sensor Digital de Temperatura e Umidade
 
 ### Informações Gerais:
