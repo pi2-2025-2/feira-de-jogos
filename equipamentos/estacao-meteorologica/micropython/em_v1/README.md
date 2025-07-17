@@ -11,7 +11,29 @@
 [BMP280](https://github.com/PaszaVonPomiot/micropython-driver-bmp280)
 
 ---
-# Sensores Pesquisados:
+# Tabelas Comparativas
+
+## Temperatura:
+| Sensor        | Faixa (°C) | Precisão (typ./máx.) | Resolução         | Deriva Longo Prazo | Encapsulamento                | Consumo Standby | Consumo Ativo  | Interface         | Tempo de Resposta     | Valor para compra                                                                                                                                                                               |
+| ------------- | ---------- | -------------------- | ----------------- | ------------------ | ----------------------------- | --------------- | -------------- | ----------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SHT31-DIS** | -40 a 125  | ±0.2°C / ±0.7°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~27,74R$](https://br.mouser.com/ProductDetail/Sensirion/SHT31-DIS-F25kS?qs=SiS427jF8nOsxbyIRpupXg%3D%3D&mgh=1)                                                                                 |
+| **SHT35-DIS** | -40 a 125  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~48,69R$](https://www.digikey.com.br/pt/products/detail/sensirion-ag/SHT35-DIS-F2-5KS/6212135)                                                                                                 |
+| **SHT85**     | -40 a 105  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | IP67 + membrana               | 0,2µA / 12µA    | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [167,98R$](https://produto.mercadolivre.com.br/MLB-4632007668-modulo-de-sensor-de-temperatura-e-umidade-sht85-sht-85-dip4-_JM?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic) |
+| **LM75**      | -55 a 125  | ±2.0°C / ±3.0°C      | 9 bits            | —                  | SOP-8 / MSOP-8                | 4µA / 6µA       | 250µA / 1mA    | I2C (100 kHz)     | ~100 ms conversão     | [17,61R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-de-temperatura-lm75a-i2c-de-alta-velocidade-8338.html)                                                                      |
+| **DS18B20**   | -55 a 125  | ±0.5°C / ±2.0°C      | Até 0.0625°C      | —                  | TO-92 / SOIC-8 / prova d'água | 0,75µA / 1µA    | 1.0mA / 1.5mA  | 1-Wire            | ~750 ms (12 bits)     | [6,56R$](https://www.eletrogate.com/modulo-sensor-de-temperatura-lm75-i2c?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                                |
+| **LM35**      | -55 a 150  | ±0.4°C / ±1.5°C      | ~0.08°C (ADC 12b) | ±0,3°C / ±0,5°C    | TO-46 / TO-92 / TO-220        | —               | 56µA / 161µA   | Analógica         | Quase instantâneo     | [31,77R$](https://www.baudaeletronica.com.br/produto/sensor-de-temperatura-lm35-original.html?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                            |
+| **LM35DZ**    | 0 a 100    | ±0.6°C / ±2.0°C      | ~0.08°C (ADC 12b) | ±0,2°C / ±0,5°C    | TO-46 / TO-92 / TO-220        | —               | 56µA / 141µA   | Analógica         | Quase instantâneo     | [12,90R$](https://www.eletrogate.com/sensor-temperatura-lm35dz?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                                           |
+| **DHT11**     | 0 a 50     | ±1.0°C / ±2.0°C      | 1°C (8 bits)      | —                  | 4 pinos                       | 100µA / 150µA   | 0.5mA / 2.5mA  | Serial (~10 kbps) | 6 a 30 s (1/e 63%)    | [7,22R$](https://www.makerhero.com/produto/sensor-de-umidade-e-temperatura-dht11/)                                                                                                              |
+| **DHT22**     | -40 a 80   | <±0.5°C              | 0.1°C             | —                  | 4 pinos                       | 40µA / 50µA     | 1.0mA / 1.5mA  | Serial (~8 kbps)  | ~2 s                  | [20,90R$](https://www.eletrogate.com/sensor-de-umidade-e-temperatura-dht22-am2302?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                        |
+| **MCP9808**   | -40 a 125  | ±0.25°C / ±1.0°C     | Até 0.0625°C      | —                  | DFN / MSOP-8                  | 0,1µA / 2µA     | 200µA / 400µA  | I2C (400 kHz)     | 30–250 ms (dep. bits) | [52,90R$](https://www.eletrogate.com/modulo-sensor-de-temperatura-de-alta-precisao-mcp9808-i2c)                                                                                                 |
+| **AHT25**     | -40 a 80   | ±0.3°C / ±2.0°C      | 0.01°C            | ±0.1°C/ano         | SMD 4 pinos                   | 250nA           | 980µA          | I2C (100 kHz)     | 5 a 30 s (1/e 63%)    | [21,90R$](https://www.eletrogate.com/sensor-de-temperatura-e-umidade-aht25)                                                                                                                     |
+| **HTU21D**    | -40 a 125  | ±0.3°C / ±1.6°C      | Até 0.01°C        | —                  | DFN                           | 0,02µA / 0,14µA | 450µA / 500µA  | I2C (400 kHz)     | ~50 ms (res. máx.)    | [20,82R$](https://www.usinainfo.com.br/sensor-de-umidade-arduino/sensor-de-umidade-e-temperatura-htu21d-4817.html)                                                                              |
+| **BMP280**    | -40 a 85   | ±0.5°C / ±1.0°C      | Até 0.0003°C      | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 720µA / 1.12mA | I2C / SPI         | 5.5–43.2 ms (modos)   | [5,60R$](https://www.makerhero.com/produto/sensor-de-pressao-e-temperatura-bmp280/?srsltid=AfmBOopCqoIFAp6BhPX3RC5JIYkg1dIOkYtuVFlLqpDHLyf-OjU2tPXUPXo)                                         |
+| **BME280**    | -40 a 85   | ±0.5°C / ±1.5°C      | 0.01°C            | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 340–714µA      | I2C / SPI         | ~1.5 ms (I2C)         | [36,96R$](https://www.usinainfo.com.br/sensor-de-pressao-arduino/sensor-de-pressao-umidade-e-temperatura-bme280-de-alta-precisao-33v-4682.html)                                                 |
+| **AHT10**     | -40 a 85   | ±0.3°C / ±1.75°C     | 0,01ºC            | < 0,04ºC/ano       | similar to QFN                | 0,25µA          | 25µA           | I2C (400kHz)      | 5 a 30 s (1/e 63%)    | [13,98R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-aht10-de-alta-precisao-para-medir-temperatura-e-umidade-5691.html)                                                          |
+
+---
+# Informações sobre os sensores:
 
 # SHT31-DIS - Sensor Digital de Temperatura e Umidade
 
@@ -108,7 +130,7 @@
 - Precisão:
 	- ±2.0 °C (de -25°C a 100°C)
 	- ±3.0 °C (de -55°C a 125°C)
-- Resolução: 0.5 °C (9 bits)
+- Resolução: 9 bits
 ### Tipos de Encapsulamento:
 - **SOP-8** (SMD)
 - **MSOP-8** (SMD)
@@ -263,7 +285,7 @@
 
 
 ---
-# ATH25 - Sensor Digital de Temperatura e Umidade
+# AHT25 - Sensor Digital de Temperatura e Umidade
 
 ### Informações Gerais:
 - Interface: I2C standard (até 100kHz)
@@ -366,22 +388,29 @@
 - Consumo de corrente (Standby): 0,1µA (typ.) e 0,3µA (máx.)
 ### Tempo de Resposta:
 -  Tempo de resposta: 1,5ms para I2C em 400 kHz.
+---
+# AHT10 - Sensor Digital de Temperatura e Umidade
+
+### Informações Gerais:
+- Interface: I2C (até 400 kHz).
+### Temperatura:
+- Faixa: -40°C a 85°C
+- Precisão:±0,3°C (typ.) e ±1,75 °C (máx.)
+- Resolução: 0,01ºC
+- Deriva de longo prazo: < 0,04ºC/ano
+### Umidade Relativa:
+- Faixa: 0% a 100%
+- Precisão: ±2% (typ.) e ±5% (máx.)
+- Resolução: 0.024%
+- Deriva de longo prazo: < 0,5%/ano
+### Tipos de Encapsulamento:
+- **similar to QFN**
+### Características Elétricas:
+- Tensão de operação: 1,8V a 3,6V
+- Consumo de corrente (Ativo):  0,25µA (máx.)
+- Consumo de corrente (Standby): 25µA (máx.)
+### Tempo de Resposta:
+- Umidade: <8 segundos (1/e 63%)
+- Temperatura: 5 a 30 segundos (1/e 63%)
 
 ---
-## Tabela dos Sensores de Temperatura:
-| Sensor        | Faixa (°C) | Precisão (typ./máx.) | Resolução         | Deriva Longo Prazo | Encapsulamento                | Consumo Standby | Consumo Ativo  | Interface         | Tempo de Resposta     |
-| ------------- | ---------- | -------------------- | ----------------- | ------------------ | ----------------------------- | --------------- | -------------- | ----------------- | --------------------- |
-| **SHT31-DIS** | -40 a 125  | ±0.2°C / ±0.7°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA   | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        |
-| **SHT35-DIS** | -40 a 125  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA   | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        |
-| **SHT85**     | -40 a 105  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | IP67 + membrana               | 0,2µA / 12µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        |
-| **LM75**      | -55 a 125  | ±2.0°C / ±3.0°C      | 0.5°C (9 bits)    | —                  | SOP-8 / MSOP-8                |  4µA / 6µA    | 250µA / 1mA    | I2C (100 kHz)     | ~100 ms conversão     |
-| **DS18B20**   | -55 a 125  | ±0.5°C / ±2.0°C      | Até 0.0625°C      | —                  | TO-92 / SOIC-8 / prova d'água |  0,75µA / 1µA   | 1.0mA / 1.5mA  | 1-Wire            | ~750 ms (12 bits)     |
-| **LM35**      | -55 a 150  | ±0.4°C / ±1.5°C      | ~0.08°C (ADC 12b) | ±0,3°C / ±0,5°C    | TO-46 / TO-92 / TO-220        |  —   | 56µA / 161µA   | Analógica         | Quase instantâneo     |
-| **LM35DZ**    | 0 a 100    | ±0.6°C / ±2.0°C      | ~0.08°C (ADC 12b) | ±0,2°C / ±0,5°C    | TO-46 / TO-92 / TO-220        |    —             | 56µA / 141µA   | Analógica         | Quase instantâneo     |
-| **DHT11**     | 0 a 50     | ±1.0°C / ±2.0°C      | 1°C (8 bits)      | —                  | 4 pinos                       |  100µA / 150µA        | 0.5mA / 2.5mA  | Serial (~10 kbps) | 6 a 30 s (1/e 63%)    |
-| **DHT22**     | -40 a 80   | <±0.5°C              | 0.1°C             | —                  | 4 pinos                       |   40µA / 50µA	              | 1.0mA / 1.5mA  | Serial (~8 kbps)  | ~2 s                  |
-| **MCP9808**   | -40 a 125  | ±0.25°C / ±1.0°C     | Até 0.0625°C      | —                  | DFN / MSOP-8                  |    0,1µA / 2µA             | 200µA / 400µA  | I2C (400 kHz)     | 30–250 ms (dep. bits) |
-| **ATH25**     | -40 a 80   | ±0.3°C / ±2.0°C      | 0.01°C            | ±0.1°C/ano         | SMD 4 pinos                   |    250nA             | 980µA          | I2C (100 kHz)     | 5 a 30 s (1/e 63%)    |
-| **HTU21D**    | -40 a 125  | ±0.3°C / ±1.6°C      | Até 0.01°C        | —                  | DFN                           |    0,02µA / 0,14µA      | 450µA / 500µA  | I2C (400 kHz)     | ~50 ms (res. máx.)    |
-| **BMP280**    | -40 a 85   | ±0.5°C / ±1.0°C      | Até 0.0003°C      | —                  | LGA (metal-lid)               |   0,1µA / 0,3µA       | 720µA / 1.12mA | I2C / SPI         | 5.5–43.2 ms (modos)   |
-| **BME280**    | -40 a 85   | ±0.5°C / ±1.5°C      | 0.01°C            | —                  | LGA (metal-lid)               |  0,1µA / 0,3µA   | 340–714µA      | I2C / SPI         | ~1.5 ms (I2C)         |
