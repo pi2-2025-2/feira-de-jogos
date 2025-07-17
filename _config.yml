@@ -1,0 +1,19 @@
+jekyll-spaceship:
+  processors:
+    - mermaid-processor
+  mermaid-processor:
+    mode: default
+    css:
+      class: mermaid
+    syntax:
+      code: 'mermaid!'
+      custom: ['@startmermaid', '@endmermaid']
+    config:
+      theme: default
+    src: https://mermaid.ink/svg/
+plugins:
+  - jekyll-remote-theme
+  - jekyll-spaceship
+remote_theme: pages-themes/hacker@v0.2.0
+source: docs/
+title: Feira de Jogos

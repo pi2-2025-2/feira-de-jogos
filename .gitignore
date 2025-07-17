@@ -16,3 +16,8 @@ dist/
 .env
 secret-*
 data/
+
+# GitHub Pages
+.jekyll-cache/
+Gemfile.lock
+_site/
