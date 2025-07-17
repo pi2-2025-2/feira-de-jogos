@@ -1,21 +1,22 @@
-# Versão 1 da estação meteorológica.
+# Versão 1
 
-### Objetivo:
+Objetivos:
+
 - Aprimorar a versão 0 com sensores melhores para garantir mais qualidade e confiabilidade dos dados coletados.
 - Adicionar os sensores requisitados que não foram instalados na v0.
----
-### Bibliotecas utilizadas para os testes:
+
+## Bibliotecas utilizadas para os testes
 
 [SD](https://github.com/avovk1/micropython_sdcard/blob/main/sdcard.py)
 [ATHx0](https://github.com/targetblank/micropython_ahtx0/blob/master/ahtx0.py)
 [BMP280](https://github.com/PaszaVonPomiot/micropython-driver-bmp280)
 
----
-# Tabelas Comparativas
+## Tabelas Comparativas
 
-## Temperatura:
-| Sensor        | Faixa (°C) | Precisão (typ./máx.) | Resolução         | Deriva Longo Prazo | Encapsulamento                | Consumo Standby | Consumo Ativo  | Interface         | Tempo de Resposta     | Valor para compra                                                                                                                                                                               |
-| ------------- | ---------- | -------------------- | ----------------- | ------------------ | ----------------------------- | --------------- | -------------- | ----------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+## Temperatura
+
+| Sensor        | Faixa (°C) | Precisão (typ./máx.) | Resolução         | Deriva Longo Prazo | Encapsulamento                | Consumo Standby | Consumo Ativo  | Interface         | Tempo de Resposta     | Valor para compra                                                                                                                                                                              |
+| ---------- | ---------- | -------------------- | ----------------- | ------------------ | ----------------------------- | --------------- | -------------- | ----------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **SHT31-DIS** | -40 a 125  | ±0.2°C / ±0.7°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~27,74R$](https://br.mouser.com/ProductDetail/Sensirion/SHT31-DIS-F25kS?qs=SiS427jF8nOsxbyIRpupXg%3D%3D&mgh=1)                                                                                 |
 | **SHT35-DIS** | -40 a 125  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~48,69R$](https://www.digikey.com.br/pt/products/detail/sensirion-ag/SHT35-DIS-F2-5KS/6212135)                                                                                                 |
 | **SHT85**     | -40 a 105  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | IP67 + membrana               | 0,2µA / 12µA    | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [167,98R$](https://produto.mercadolivre.com.br/MLB-4632007668-modulo-de-sensor-de-temperatura-e-umidade-sht85-sht-85-dip4-_JM?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic) |
@@ -32,385 +33,527 @@
 | **BME280**    | -40 a 85   | ±0.5°C / ±1.5°C      | 0.01°C            | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 340–714µA      | I2C / SPI         | ~1.5 ms (I2C)         | [36,96R$](https://www.usinainfo.com.br/sensor-de-pressao-arduino/sensor-de-pressao-umidade-e-temperatura-bme280-de-alta-precisao-33v-4682.html)                                                 |
 | **AHT10**     | -40 a 85   | ±0.3°C / ±1.75°C     | 0,01ºC            | < 0,04ºC/ano       | similar to QFN                | 0,25µA          | 25µA           | I2C (400kHz)      | 5 a 30 s (1/e 63%)    | [13,98R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-aht10-de-alta-precisao-para-medir-temperatura-e-umidade-5691.html)                                                          |
 
----
-# Informações sobre os sensores:
+## Informações sobre os sensores
 
-# SHT31-DIS - Sensor Digital de Temperatura e Umidade
+### SHT31-DIS - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Informações Gerais:
+
 - Interface: I2C (clock máximo de 1 MHz)
 - Endereços I2C:
-	 - 0x44 (ADDR conectado ao GND)
-	 - 0x45 (ADDR conectado ao VDD)
-### Temperatura:
+  - 0x44 (ADDR conectado ao GND)
+  - 0x45 (ADDR conectado ao VDD)
+
+Temperatura:
+
 - Faixa: -40°C a 125°C
 - Precisão: ±0.2°C (entre 0ºC e 90ºC, typ.) e ±0.7°C (máx.)
 - Resolução: 0.01ºC
 - Deriva de longo prazo: < 0,03°C/ano
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100 %
 - Precisão (a 25°C): ±2% (typ.) e ±3% (máx.)
 - Resolução: 0.01%
 - Deriva de longo prazo: < 0,25%/ano
-### Tipos de Encapsulamento:
-- ***open-cavity DFN***
-### Características Elétricas:
+
+Tipos de encapsulamentos:
+
+- ***Open-cavity DFN***
+
+Características elétricas:
+
 - Tensão de operação: 2,15V a 5,5V
 - Consumo de corrente (Ativo):  600µA (typ.) e 1,5mA (máx)
 - Consumo de corrente (Standby): 0,2µA (typ.) e 6µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade: ~8 segundos (1/e 63%)
 - Temperatura: ~4 segundos (1/e 63%)
 - Comunicação: ~4 ms para pacote completo via I2C
 
----
-# SHT35-DIS - Sensor Digital de Temperatura e Umidade
+### SHT35-DIS - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: I2C (clock máximo de 1 MHz)
 - Endereços I2C:
-	 - 0x44 (ADDR conectado ao GND)
-	 - 0x45 (ADDR conectado ao VDD)
-### Temperatura:
+  - 0x44 (ADDR conectado ao GND)
+  - 0x45 (ADDR conectado ao VDD)
+
+Temperatura:
+
 - Faixa: -40°C a 125°C
 - Precisão: ±0.1°C (entre 20ºC e 60ºC, typ.) e ±0.6°C (máx.)
 - Resolução: 0.01ºC
 - Deriva de longo prazo: < 0,03°C/ano
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100 %
 - Precisão (a 25°C): ±1,5% (typ.) e ±3% (máx.)
 - Resolução: 0,01%
 - Deriva de longo prazo: < 0,25%/ano
-### Tipos de Encapsulamento:
-- ***open-cavity DFN***
-### Características Elétricas:
+
+Tipos de encapsulamentos:
+
+- ***Open-cavity DFN***
+
+Características elétricas:
+
 - Tensão de operação: 2,15V a 5,5V
 - Consumo de corrente (Ativo):  600µA (typ.) e 1,5mA (máx)
 - Consumo de corrente (Standby): 0,2µA (typ.) e 6µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade: ~8 segundos (1/e 63%)
 - Temperatura: ~4 segundos (1/e 63%)
 - Comunicação: ~4 ms para pacote completo via I2C
 
----
-# SHT85 - Sensor Digital de Temperatura e Umidade
+### SHT85 - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: I2C (clock máximo de 1 MHz)
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 105°C
 - Precisão: ±0.1°C (entre 20ºC e 50ºC, typ.) e ±0.6°C (máx.)
 - Resolução: 0,01ºC
 - Deriva de longo prazo: < 0,03°C/ano
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100 %
 - Precisão (a 25°C): ±1,5% (typ.) e ±3% (máx.)
 - Resolução: 0,01%
 - Deriva de longo prazo: < 0,25%/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - ***IP67 housing with hydrophobic membrane filter***
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 2,15V a 5,5V
 - Consumo de corrente (Ativo):  600µA (typ.) e 1,5mA (máx)
 - Consumo de corrente (Standby): 0,2µA (typ.) e 12µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade: ~8 segundos (1/e 63%)
 - Temperatura: ~4 segundos (1/e 63%)
 - Comunicação: ~4 ms para pacote completo via I2C
 
+### LM75 - Sensor Digital de Temperatura
 
----
-# LM75 - Sensor Digital de Temperatura
+Informações gerais:
 
-### Informações Gerais:
 - Interface: I2C standard (até 100 kHz).
 - Endereços I2C: configuráveis via pinos A0, A1, A2 (até 8 dispositivos).
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -55°C a 125°C
 - Precisão:
-	- ±2.0 °C (de -25°C a 100°C)
-	- ±3.0 °C (de -55°C a 125°C)
+  - ±2.0 °C (de -25°C a 100°C)
+  - ±3.0 °C (de -55°C a 125°C)
 - Resolução: 9 bits
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - **SOP-8** (SMD)
 - **MSOP-8** (SMD)
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 3,0V a 5,5V
 - Consumo de corrente (Ativo):  250µA (typ.) e 1mA (máx.)
 - Consumo de corrente (Standby): 4µA (3V, máx.) e 6µA (5V, máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Tempo de conversão: ~100 ms
 - Comunicação I2C: ~100 µs para dados
 
----
-# DS18B20 - Sensor Digital de Temperatura
-### Informações Gerais:
+### DS18B20 - Sensor Digital de Temperatura
+
+Informações gerais:
+
 - Interface: 1-Wire (requere apenas um fio de dados + GND)
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -55°C a 125°C
 - Precisão: ±0.5 °C (de -10°C a 85°C) e ±2ºC (entre -55ºC e 125ºC)
 - Resolução configurável: 9 a 12 bits
-	 - 9 bits: 0.5°C
-	 - 10 bits: 0.25°C
-	 - 11 bits: 0.125°C
-	 - 12 bits: 0.0625°C
-### Tipos de Encapsulamentos:
--  **TO-92** (3 pinos)
--  **SOIC-8** (SMD)
--  Encapsulamento a Prova D’água
-### Características Elétricas:
+  - 9 bits: 0.5°C
+  - 10 bits: 0.25°C
+  - 11 bits: 0.125°C
+  - 12 bits: 0.0625°C
+
+Tipos de encapsulamentos:
+
+- **TO-92** (3 pinos)
+- **SOIC-8** (SMD)
+- Encapsulamento a prova d’água
+
+Características elétricas:
+
 - Tensão de operação: 3,0V a 5,5V
-- Consumo de corrente (Standby): 0,75µA (typ.) e 1,0µA (máx.) 
+- Consumo de corrente (Standby): 0,75µA (typ.) e 1,0µA (máx.)
 - Consumo de corrente (Ativo): 1,0mA (typ.) e 1,5mA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Conversão temperatura: ~750 ms (resolução máxima)
 - Comunicação 1-Wire: alguns ms para dados
 
----
-# LM35 - Sensor Analógico de Temperatura
-### Informações Gerais:
+### LM35 - Sensor Analógico de Temperatura
+
+Informações gerais:
+
 - Interface: Analógica
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -55°C a 150°C
 - Precisão: ±0.4°C (a 25ºC, typ.) e ±1.5ºC (máx.)
 - Resolução: Dependente do ADC da ESP32 (12 bits, resolução teórica de 0,08ºC)
 - não-linearidade: ±0,3 °C (typ.) e ±0,5 °C (máx.)
-### Tipos de Encapsulamentos:
--  **TO-46**
--  **SOIC-8** (SMD)
--  **TO-92** 
--  **TO-220**
-### Características Elétricas:
+
+Tipos de encapsulamentos:
+
+- **TO-46**
+- **SOIC-8** (SMD)
+- **TO-92**
+- **TO-220**
+
+Características elétricas:
+
 - Tensão de operação: 4V a 30V
-- Consumo de corrente (Constante): 56µA (5V e 25ºC, typ.) e 161µA (máx.) 
-### Tempo de Resposta:
+- Consumo de corrente (Constante): 56µA (5V e 25ºC, typ.) e 161µA (máx.)
+
+Tempo de resposta:
+
 - Quase instantâneo (sinal analógico)
 - Conversão ADC depende do microcontrolador (~µs a ms)
 
----
-# LM35DZ - Sensor Analógico de Temperatura
-### Informações Gerais:
+### LM35DZ - Sensor Analógico de Temperatura
+
+Informações gerais:
+
 - Interface: Analógica
-### Temperatura:
+
+Temperatura:
+
 - Faixa: 0°C a 100°C
 - Precisão: ±0.6°C (a 25ºC, typ.) e ±2,0ºC (máx.)
 - Resolução: Dependente do ADC da ESP32 (12 bits, resolução teórica de 0,08ºC)
 - não-linearidade: ±0,2 °C (typ.) e ±0,5 °C (máx.)
-### Tipos de Encapsulamentos:
--  **TO-46**
--  **SOIC-8** (SMD)
--  **TO-92** 
--  **TO-220**
-### Características Elétricas:
+
+Tipos de encapsulamentos:
+
+- **TO-46**
+- **SOIC-8** (SMD)
+- **TO-92**
+- **TO-220**
+
+Características elétricas:
+
 - Tensão de operação: 4V a 30V
-- Consumo de corrente (Constante): 56µA (5V e 25ºC, typ.) e 141µA (máx.) 
-### Tempo de Resposta:
+- Consumo de corrente (Constante): 56µA (5V e 25ºC, typ.) e 141µA (máx.)
+
+Tempo de resposta:
+
 - Quase instantâneo (sinal analógico)
 - Conversão ADC depende do microcontrolador (~µs a ms)
 
----
-# DHT11 - Sensor Digital de Temperatura e Umidade
+### DHT11 - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: Serial (Single-wire, bidirecional)
 - Taxa de transmissão: ~10kbps
-### Temperatura:
+
+Temperatura:
+
 - Faixa: 0°C a 50°C
 - Precisão: ±1ºC (mín.) e ±2°C (máx.)
 - Resolução: 8 bits (1ºC)
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 30% a 90% (0ºC), 20% a 90% (25ºC) e 20% a 80% (50ºC)
 - Precisão: ±4% (25ºC) e ±5% (0-50ºC)
 - Resolução: 8 bits (1%)
 - Deriva de longo prazo: ±1%/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - **4 Pin Single Row**
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 3V a 5,5V
 - Consumo de corrente (Ativo):  0,5mA (mín.) e 2,5mA (máx)
 - Consumo de corrente (Standby): 100µA (mín.) e 150µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade: 6 a 15 segundos (1/e 63%)
 - Temperatura: 6 a 30 segundos (1/e 63%)
 - Comunicação: ~4 ms para pacote completo
 
----
-# DHT22 - Sensor Digital de Temperatura e Umidade
+### DHT22 - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: Serial (Single-wire, bidirecional)
 - Tempo para leitura: 2s
 - Taxa de transmissão: ~8kbps
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 80°C
 - Precisão: <±0,5ºC
 - Resolução: 0,1ºC
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100%
 - Precisão: ±2% (typ.) e ±5% (máx.)
 - Resolução: 0,1%
 - Deriva de longo prazo: ±0,5%/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - **4 Pin Single Row**
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 3,3V a 6V
 - Consumo de corrente (Ativo):  1mA (mín.) e 1,5mA (máx)
 - Consumo de corrente (Standby): 40µA (mín.) e 50µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade e temperatura: ~2 segundos (mínimo entre leituras)
 - Comunicação: ~5 ms para pacote completo
 
----
-# MCP9808 - Sensor Digital de Temperatura
+### MCP9808 - Sensor Digital de Temperatura
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: I2C standard (até 400 kHz).
 - Endereços I2C: configuráveis via pinos A0, A1, A2
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 125°C
 - Precisão: ±0,25 °C (de -25°C a 100°C) e ±1,0 °C (máx.)
 - Resolução configurável: +0.5°C, +0.25°C, +0.125°C, +0.0625°C
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - **8-Lead DFN** (SMD)
 - **MSOP-8** (SMD)
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 2,7V a 5,5V
 - Consumo de corrente (Ativo):  200µA (typ.) e 400µA (máx.)
 - Consumo de corrente (Standby): 0,1µA (typ.) e 2µA (máx.)
-### Tempo de Conversão:
+
+### Tempo de Conversão
+
 - 0.5°C (9 bits): **30 ms**
 - 0.25°C (10 bits): **65 ms**
 - 0.125°C (11 bits): **130 ms**
 - 0.0625°C (12 bits): **250 ms**
 
+### AHT25 - Sensor Digital de Temperatura e Umidade
 
----
-# AHT25 - Sensor Digital de Temperatura e Umidade
+Informações gerais:
 
-### Informações Gerais:
 - Interface: I2C standard (até 100kHz)
 - Tempo para leitura: 2s
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 80°C
 - Precisão: ±0,3ºC (typ.) e ±2ºC (máx.)
 - Resolução: 0,01ºC
 - Deriva de longo prazo: ±0,1ºC/ano
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100%
 - Precisão: ±2% (typ.) e ±6% (máx.)
 - Resolução: 0.024%
 - Deriva de longo prazo: <1%/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - ***SMD de 4 pinos***
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 2,2V a 5,5V
 - Consumo de corrente (Ativo):  980µA
 - Consumo de corrente (Standby): 250nA
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade: <8 segundos (1/e 63%)
 - Temperatura: 5 a 30 segundos (1/e 63%)
 
----
-# HTU21D - Sensor Digital de Temperatura e Umidade
+### HTU21D - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: I2C (até 400 kHz).
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 125°C
 - Precisão:±0,3°C (typ.) e ±1,6 °C (máx.)
 - Resolução: 12 (0,04ºC) a 14 bits (0,01ºC)
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100%
 - Precisão: ±2% (typ.) e ±5% (máx.)
 - Resolução configurável: 8 (0,7%) a 12 (0,04%) bits
 - Deriva de longo prazo: ±0,5%/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - **DFN**
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 1,5V a 3,6V
 - Consumo de corrente (Ativo):  450µA (typ.) e 500µA (máx.)
 - Consumo de corrente (Standby): 0,02µA (typ.) e 0,14µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Tempo de conversão (umidade): 16ms (resolução máxima)
 - Tempo de conversão (temperatura): 50ms (resolução máxima)
 
----
-# BMP280 - Sensor Digital de Temperatura e Pressão
+### BMP280 - Sensor Digital de Temperatura e Pressão
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: I2C (clock máximo de 3,4 MHz)
 - Interface SPI (3 e 4 fios, clock máximo de 10 MHz)
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 85°C
 - Precisão: ±0.5°C (typ.) e ±1,0°C (máx.)
 - Resolução: 0.01ºC (podendo chegar a *0.0003 °C*)
-### Pressão:
+
+### Pressão
+
 - Faixa: 300hPa a 1100hPa
 - Precisão: ±1.0hPa (typ.) e ±1.7hPa (máx.)
 - Resolução: 0.0016hPa (podendo chegar a *0.16Pa*)
 - Deriva de longo prazo: 1,0hPa/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - ***8-pin metal-lid LGA***
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 1,71V a 3,6V
 - Consumo de corrente (Ativo):  720µA (typ.) e 1,12mA (máx)
 - Consumo de corrente (Standby): 0,1µA (typ.) e 0,3µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Tempo de medição: 5,5ms (menor resolução), 43,2ms (maior resolução)
 
----
-# BME280 - Sensor Digital de Temperatura, Umidade e Pressão
+### BME280 - Sensor Digital de Temperatura, Umidade e Pressão
 
-### Informações Gerais:
+Informações gerais:
+
 - Interface: I2C (clock máximo de 3,4 MHz)
 - Interface SPI (3 e 4 fios, clock máximo de 10 MHz)
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 85°C
 - Precisão: ±0.5°C (typ.) e ±1,5°C (máx.)
 - Resolução: 0.01ºC
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100%
 - Precisão: ±3% (20-80%, 25 °C, typ.)
 - Resolução configurável: 0.008%
 - Deriva de longo prazo: ±0,5%/ano
-### Pressão:
+
+Pressão:
+
 - Faixa: 300hPa a 1100hPa
 - Precisão: ±1.0hPa (typ.) e ±1.7hPa (máx.)
 - Resolução: 0.18Pa
 - Deriva de longo prazo: 1,0hPa/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - ***8-pin metal-lid LGA***
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 1,71V a 3,6V
 - Consumo de corrente (Ativo, Pressão):  714µA
 - Consumo de corrente (Ativo, Umidade):  340µA
 - Consumo de corrente (Ativo, Temperatura):  350µA
 - Consumo de corrente (Standby): 0,1µA (typ.) e 0,3µA (máx.)
-### Tempo de Resposta:
--  Tempo de resposta: 1,5ms para I2C em 400 kHz.
----
-# AHT10 - Sensor Digital de Temperatura e Umidade
 
-### Informações Gerais:
+Tempo de resposta:
+
+- Tempo de resposta: 1,5ms para I2C em 400 kHz.
+
+### AHT10 - Sensor Digital de Temperatura e Umidade
+
+Informações gerais:
+
 - Interface: I2C (até 400 kHz).
-### Temperatura:
+
+Temperatura:
+
 - Faixa: -40°C a 85°C
 - Precisão:±0,3°C (typ.) e ±1,75 °C (máx.)
 - Resolução: 0,01ºC
 - Deriva de longo prazo: < 0,04ºC/ano
-### Umidade Relativa:
+
+Umidade relativa:
+
 - Faixa: 0% a 100%
 - Precisão: ±2% (typ.) e ±5% (máx.)
 - Resolução: 0.024%
 - Deriva de longo prazo: < 0,5%/ano
-### Tipos de Encapsulamento:
+
+Tipos de encapsulamentos:
+
 - **similar to QFN**
-### Características Elétricas:
+
+Características elétricas:
+
 - Tensão de operação: 1,8V a 3,6V
 - Consumo de corrente (Ativo):  0,25µA (máx.)
 - Consumo de corrente (Standby): 25µA (máx.)
-### Tempo de Resposta:
+
+Tempo de resposta:
+
 - Umidade: <8 segundos (1/e 63%)
 - Temperatura: 5 a 30 segundos (1/e 63%)
-
----

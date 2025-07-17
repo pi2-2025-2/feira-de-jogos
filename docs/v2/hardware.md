@@ -1,10 +1,19 @@
-# Configuração
+# *Hardware*
+
+Para o devido funcionamento do *hardware* na Feira de Jogos, é preciso configurá-lo para se integrar aos serviços, como MQTT e HTTP.
+
+## *Vending Machine**
+
+O [projeto 3D da *vending machine*](https://www.tinkercad.com/things/4Lr2shYiBq8-dispenser3d) está disponível *online*.
+
+
+## *Arcade*
 
 A tecla `SELECT`, que é usada nos emuladores MAME (e derivados) também como `COIN` (de adicionar moeda), deve ser exclusiva do teclado virtual - de operação remota. O mesmo deve ser feito com `HOTKEY`, para evitar saída do jogo ou outras funções especiais do RetroArch, como salvar e recuperar estado de jogo.
 
 As teclas `J` e `K` são usadas para adicionar moedas (`HOTKEY`/`COIN`) e fechar o jogo (`EXIT` quando combinada com `HOTKEY`), respectivamente. O teclado físico é usado apenas em caso de emergência.
 
-## Joystick
+### *Joystick*
 
 Para que o *joystick* funcione apenas com os comandos do jogo, deve-se:
 
@@ -19,26 +28,26 @@ Para que o *joystick* funcione apenas com os comandos do jogo, deve-se:
 input_enable_hotkey_btn = "nul"
 ```
 
-## Teclado virtual
+### Teclado virtual
 
 O teclado virtual é a aplicação que recebe comandos remotamente e adiciona moedas ao jogo:
 
 1. Adicionar os módulos de *kernel* no final do arquivo `/etc/modules`:
 
-```
+```text
 uinput
 evdev
 ```
 
 2. Permitir que a aplicação seja executada pelo usuário `pi` (usuário padrão de Raspberry Pi e semelhantes), que por padrão já pertence ao grupo `games`. Criar, assim, o arquivo `/etc/udev/rules.d/10-uinput.rules` com o seguinte conteúdo:
 
-```
+```text
 KERNEL=="uinput", MODE="0660", GROUP="games"
 ```
 
 O teclado virtual é implementado no arquivo [`client.py`](client.py), onde a função `coinInsert()` define a inserção de moeda por controle remoto, conforme a [documentação](https://github.com/feira-de-jogos/docs/blob/v2.0/v2/machine.json).
 
-## Teclado físico
+### Teclado físico
 
 O teclado físico não é obrigatório. Seu uso é apenas emergencial para adicionar manualmente moedas e fechar o jogo:
 

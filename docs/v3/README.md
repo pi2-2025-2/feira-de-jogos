@@ -77,3 +77,6 @@ flowchart LR
   E --> F
 ```
 
+## Desenvolvimento dos jogos
+
+Para os jogos a serem desenvolvidos nesta versão, há um [fluxo de tarefas](./projeto.md) recomendado, bem como um [exemplo de ideia inicial](./sobre-o-jogo.md).

@@ -1,10 +1,10 @@
 // Bibliotecas
-#include <PubSubClient.h>
-#include <DallasTemperature.h>
-#include <OneWire.h>
+#include <PubSubClient.h> // https://pubsubclient.knolleary.net/
+#include <DallasTemperature.h> // https://github.com/milesburton/Arduino-Temperature-Control-Library
+#include <OneWire.h> // https://www.pjrc.com/teensy/td_libs_OneWire.html
 #include <Wire.h>
-#include <TinyDHT.h>
-#include <Adafruit_BMP280.h>
+#include <TinyDHT.h> // https://github.com/adafruit/TinyDHT
+#include <Adafruit_BMP280.h> // https://github.com/adafruit/Adafruit_BMP280_Library
 #include <WiFi.h>
 
 // Configuração
