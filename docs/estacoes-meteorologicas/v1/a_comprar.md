@@ -13,6 +13,7 @@
 - 1x [DHT22](https://www.eletrogate.com/sensor-de-umidade-e-temperatura-dht22-am2302?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)
 - 1x [AHT10](https://www.eletrogate.com/modulo-sensor-de-temperatura-e-umidade-de-alta-precisao-aht10?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)
 - 1x [DS18B20](https://www.eletrogate.com/sensor-de-temperatura-digital-ds18b20?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)
+- 2x [HR202L](https://www.makerhero.com/produto/sensor-de-umidade-hr202l-higrometro/)
 
 **Os sensores `SHT85`, `SHT35-DIS` e `SHT31-DIS` são sensores bem parecidos em termos de especificações, além mais caros por causa de sua alta precisão.**
 **A unidade do DS18B20 que eu tenho é no encapsulamento a prova d'água**

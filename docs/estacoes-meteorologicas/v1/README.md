@@ -17,22 +17,39 @@ Objetivos:
 
 | Sensor        | Faixa (°C) | Precisão (typ./máx.) | Resolução         | Deriva Longo Prazo | Encapsulamento                | Consumo Standby | Consumo Ativo  | Interface         | Tempo de Resposta     | Valor para compra                                                                                                                                                                              |
 | ---------- | ---------- | -------------------- | ----------------- | ------------------ | ----------------------------- | --------------- | -------------- | ----------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **SHT31-DIS** | -40 a 125  | ±0.2°C / ±0.7°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~27,74R$](https://br.mouser.com/ProductDetail/Sensirion/SHT31-DIS-F25kS?qs=SiS427jF8nOsxbyIRpupXg%3D%3D&mgh=1)                                                                                 |
-| **SHT35-DIS** | -40 a 125  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~48,69R$](https://www.digikey.com.br/pt/products/detail/sensirion-ag/SHT35-DIS-F2-5KS/6212135)                                                                                                 |
-| **SHT85**     | -40 a 105  | ±0.1°C / ±0.6°C      | 0.01°C            | < 0,03°C/ano       | IP67 + membrana               | 0,2µA / 12µA    | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [167,98R$](https://produto.mercadolivre.com.br/MLB-4632007668-modulo-de-sensor-de-temperatura-e-umidade-sht85-sht-85-dip4-_JM?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic) |
-| **LM75**      | -55 a 125  | ±2.0°C / ±3.0°C      | 9 bits            | —                  | SOP-8 / MSOP-8                | 4µA / 6µA       | 250µA / 1mA    | I2C (100 kHz)     | ~100 ms conversão     | [17,61R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-de-temperatura-lm75a-i2c-de-alta-velocidade-8338.html)                                                                      |
-| **DS18B20**   | -55 a 125  | ±0.5°C / ±2.0°C      | Até 0.0625°C      | —                  | TO-92 / SOIC-8 / prova d'água | 0,75µA / 1µA    | 1.0mA / 1.5mA  | 1-Wire            | ~750 ms (12 bits)     | [6,56R$](https://www.eletrogate.com/modulo-sensor-de-temperatura-lm75-i2c?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                                |
-| **LM35**      | -55 a 150  | ±0.4°C / ±1.5°C      | ~0.08°C (ADC 12b) | ±0,3°C / ±0,5°C    | TO-46 / TO-92 / TO-220        | —               | 56µA / 161µA   | Analógica         | Quase instantâneo     | [31,77R$](https://www.baudaeletronica.com.br/produto/sensor-de-temperatura-lm35-original.html?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                            |
-| **LM35DZ**    | 0 a 100    | ±0.6°C / ±2.0°C      | ~0.08°C (ADC 12b) | ±0,2°C / ±0,5°C    | TO-46 / TO-92 / TO-220        | —               | 56µA / 141µA   | Analógica         | Quase instantâneo     | [12,90R$](https://www.eletrogate.com/sensor-temperatura-lm35dz?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                                           |
-| **DHT11**     | 0 a 50     | ±1.0°C / ±2.0°C      | 1°C (8 bits)      | —                  | 4 pinos                       | 100µA / 150µA   | 0.5mA / 2.5mA  | Serial (~10 kbps) | 6 a 30 s (1/e 63%)    | [7,22R$](https://www.makerhero.com/produto/sensor-de-umidade-e-temperatura-dht11/)                                                                                                              |
-| **DHT22**     | -40 a 80   | <±0.5°C              | 0.1°C             | —                  | 4 pinos                       | 40µA / 50µA     | 1.0mA / 1.5mA  | Serial (~8 kbps)  | ~2 s                  | [20,90R$](https://www.eletrogate.com/sensor-de-umidade-e-temperatura-dht22-am2302?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                        |
-| **MCP9808**   | -40 a 125  | ±0.25°C / ±1.0°C     | Até 0.0625°C      | —                  | DFN / MSOP-8                  | 0,1µA / 2µA     | 200µA / 400µA  | I2C (400 kHz)     | 30–250 ms (dep. bits) | [52,90R$](https://www.eletrogate.com/modulo-sensor-de-temperatura-de-alta-precisao-mcp9808-i2c)                                                                                                 |
-| **AHT25**     | -40 a 80   | ±0.3°C / ±2.0°C      | 0.01°C            | ±0.1°C/ano         | SMD 4 pinos                   | 250nA           | 980µA          | I2C (100 kHz)     | 5 a 30 s (1/e 63%)    | [21,90R$](https://www.eletrogate.com/sensor-de-temperatura-e-umidade-aht25)                                                                                                                     |
-| **HTU21D**    | -40 a 125  | ±0.3°C / ±1.6°C      | Até 0.01°C        | —                  | DFN                           | 0,02µA / 0,14µA | 450µA / 500µA  | I2C (400 kHz)     | ~50 ms (res. máx.)    | [20,82R$](https://www.usinainfo.com.br/sensor-de-umidade-arduino/sensor-de-umidade-e-temperatura-htu21d-4817.html)                                                                              |
-| **BMP280**    | -40 a 85   | ±0.5°C / ±1.0°C      | Até 0.0003°C      | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 720µA / 1.12mA | I2C / SPI         | 5.5–43.2 ms (modos)   | [5,60R$](https://www.makerhero.com/produto/sensor-de-pressao-e-temperatura-bmp280/?srsltid=AfmBOopCqoIFAp6BhPX3RC5JIYkg1dIOkYtuVFlLqpDHLyf-OjU2tPXUPXo)                                         |
-| **BME280**    | -40 a 85   | ±0.5°C / ±1.5°C      | 0.01°C            | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 340–714µA      | I2C / SPI         | ~1.5 ms (I2C)         | [36,96R$](https://www.usinainfo.com.br/sensor-de-pressao-arduino/sensor-de-pressao-umidade-e-temperatura-bme280-de-alta-precisao-33v-4682.html)                                                 |
-| **AHT10**     | -40 a 85   | ±0.3°C / ±1.75°C     | 0,01ºC            | < 0,04ºC/ano       | similar to QFN                | 0,25µA          | 25µA           | I2C (400kHz)      | 5 a 30 s (1/e 63%)    | [13,98R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-aht10-de-alta-precisao-para-medir-temperatura-e-umidade-5691.html)                                                          |
+| **SHT31-DIS** | -40 a 125  | ±0,2°C / ±0,7°C      | 0,01°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1.5mA  | I2C (1 MHz)       | ~4 s (1/e 63%)        | [~27,74R$](https://br.mouser.com/ProductDetail/Sensirion/SHT31-DIS-F25kS?qs=SiS427jF8nOsxbyIRpupXg%3D%3D&mgh=1)                                                                                 |
+| **SHT35-DIS** | -40 a 125  | ±0,1°C / ±036°C      | 0301°C            | < 0,03°C/ano       | DFN (open-cavity)             | 0,2µA / 6µA     | 600µA / 1,5mA  | I2C (1 MHz)       | ~ 4s (1/e 63%)        | [~48,69R$](https://www.digikey.com.br/pt/products/detail/sensirion-ag/SHT35-DIS-F2-5KS/6212135)                                                                                                 |
+| **SHT85**     | -40 a 105  | ±0,1°C / ±0,6°C      | 0,01°C            | < 0,03°C/ano       | IP67 + membrana               | 0,2µA / 12µA    | 600µA / 1.5mA  | I2C (1 MHz)       | ~ 4s (1/e 63%)        | [167,98R$](https://produto.mercadolivre.com.br/MLB-4632007668-modulo-de-sensor-de-temperatura-e-umidade-sht85-sht-85-dip4-_JM?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic) |
+| **LM75**      | -55 a 125  | ±2,0°C / ±3,0°C      | 9 bits            | —                  | SOP-8 / MSOP-8                | 4µA / 6µA       | 250µA / 1mA    | I2C (100 kHz)     | ~100 ms conversão     | [17,61R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-de-temperatura-lm75a-i2c-de-alta-velocidade-8338.html)                                                                      |
+| **DS18B20**   | -55 a 125  | ±0,5°C / ±2,0°C      | Até 0,0625°C      | —                  | TO-92 / SOIC-8 / prova d'água | 0,75µA / 1µA    | 1,0mA / 1,5mA  | 1-Wire            | ~750 ms (12 bits)     | [6,56R$](https://www.eletrogate.com/modulo-sensor-de-temperatura-lm75-i2c?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                                |
+| **LM35**      | -55 a 150  | ±0,4°C / ±1,5°C      | ~0.08°C (ADC 12b) | ±0,3°C / ±0,5°C    | TO-46 / TO-92 / TO-220        | —               | 56µA / 161µA   | Analógica         | Quase instantâneo     | [31,77R$](https://www.baudaeletronica.com.br/produto/sensor-de-temperatura-lm35-original.html?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                            |
+| **LM35DZ**    | 0 a 100    | ±0,6°C / ±2,0°C      | ~0,08°C (ADC 12b) | ±0,2°,C / ±0,5°C    | TO-46 / TO-92 / TO-220        | —               | 56µA / 141µA   | Analógica         | Quase instantâneo     | [12,90R$](https://www.eletrogate.com/sensor-temperatura-lm35dz?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                                           |
+| **DHT11**     | 0 a 50     | ±1,0°C / ±2,0°C      | 1°C (8 bits)      | —                  | 4 pinos                       | 100µA / 150µA   | 0,5mA / 2,5mA  | Serial (~10 kbps) | 6 a 30s (1/e 63%)    | [7,22R$](https://www.makerhero.com/produto/sensor-de-umidade-e-temperatura-dht11/)                                                                                                              |
+| **DHT22**     | -40 a 80   | < ±0,5°C              | 0,1°C             | —                  | 4 pinos                       | 40µA / 50µA     | 1,0mA / 1,5mA  | Serial (~8 kbps)  | ~ 2s                  | [20,90R$](https://www.eletrogate.com/sensor-de-umidade-e-temperatura-dht22-am2302?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                        |
+| **MCP9808**   | -40 a 125  | ±0,25°C / ±1,0°C     | Até 0,0625°C      | —                  | DFN / MSOP-8                  | 0,1µA / 2µA     | 200µA / 400µA  | I2C (400 kHz)     | 30–250 ms (dep. bits) | [52,90R$](https://www.eletrogate.com/modulo-sensor-de-temperatura-de-alta-precisao-mcp9808-i2c)                                                                                                 |
+| **AHT25**     | -40 a 80   | ±0,3°C / ±2,0°C      | 0,01°C            | ±0,1°C/ano         | SMD 4 pinos                   | 250nA           | 980µA          | I2C (100 kHz)     | 5 a 30 s (1/e 63%)    | [21,90R$](https://www.eletrogate.com/sensor-de-temperatura-e-umidade-aht25)                                                                                                                     |
+| **HTU21D**    | -40 a 125  | ±0,3°C / ±1,6°C      | Até 0,01°C        | —                  | DFN                           | 0,02µA / 0,14µA | 450µA / 500µA  | I2C (400 kHz)     | ~50 ms (res. máx.)    | [20,82R$](https://www.usinainfo.com.br/sensor-de-umidade-arduino/sensor-de-umidade-e-temperatura-htu21d-4817.html)                                                                              |
+| **BMP280**    | -40 a 85   | ±0,5°C / ±1,0°C      | Até 0,0003°C      | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 720µA / 1,12mA | I2C / SPI         | 5,5–43,2 ms (modos)   | [5,60R$](https://www.makerhero.com/produto/sensor-de-pressao-e-temperatura-bmp280/?srsltid=AfmBOopCqoIFAp6BhPX3RC5JIYkg1dIOkYtuVFlLqpDHLyf-OjU2tPXUPXo)                                         |
+| **BME280**    | -40 a 85   | ±0,5°C / ±1,5°C      | 0,01°C            | —                  | LGA (metal-lid)               | 0,1µA / 0,3µA   | 340–714µA      | I2C / SPI         | ~ 1,5 ms (I2C)         | [36,96R$](https://www.usinainfo.com.br/sensor-de-pressao-arduino/sensor-de-pressao-umidade-e-temperatura-bme280-de-alta-precisao-33v-4682.html)                                                 |
+| **AHT10**     | -40 a 85   | ±0,3°C / ±1,75°C     | 0,01ºC            | < 0,04ºC/ano       | similar to QFN                | 0,25µA          | 25µA           | I2C (400kHz)      | 5 a 30s (1/e 63%)    | [13,98R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-aht10-de-alta-precisao-para-medir-temperatura-e-umidade-5691.html)                                                          |
 
+## Umidade
+
+| Sensor        | Faixa (%) | Precisão (typ./máx.) | Resolução     | Deriva Longo Prazo | Encapsulamento    | Consumo Standby | Consumo Ativo      | Interface         | Tempo de Resposta   | Valor para compra                                                                                                                                                                               |
+| ------------- | --------- | -------------------- | ------------- | ------------------ | ----------------- | --------------- | ------------------ | ----------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SHT31-DIS** | 0 a 100   | ±2,0% / ±3,0%        | 0,01%         | < 0,25%/ano        | DFN (open-cavity) | 0,2µA / 6µA     | 600µA / 1,5mA      | I2C (1 MHz)       | ~8s (1/e 63%)       | [~27,74R$](https://br.mouser.com/ProductDetail/Sensirion/SHT31-DIS-F25kS?qs=SiS427jF8nOsxbyIRpupXg%3D%3D&)                                                                                      |
+| **SHT35-DIS** | 0 a 100   | ±1,5% / ±3,0%        | 0,01%         | < 0,25%/ano        | DFN (open-cavity) | 0,2µA / 6µA     | 600µA / 1,5mA      | I2C (1 MHz)       | ~8s (1/e 63%)       | [~48,69R$](https://www.digikey.com.br/pt/products/detail/sensirion-ag/SHT35-DIS-F2-5KS/6212135)                                                                                                 |
+| **SHT85**     | 0 a 100   | ±1,5% / ±3,0%        | 0,01%         | < 0,25%/ano        | IP67 + membrana   | 0,2µA / 12µA    | 600µA / 1,5mA      | I2C (1 MHz)       | < 8s (1/e 63%)      | [167,98R$](https://produto.mercadolivre.com.br/MLB-4632007668-modulo-de-sensor-de-temperatura-e-umidade-sht85-sht-85-dip4-_JM?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic) |
+| **DHT11**     | 20 a 80   | ±4,0% / ±5,0%        | 1% (8 bits)   | ±1%/ano            | 4 pinos           | 100µA / 150µA   | 0.5mA / 2,5mA      | Serial (~10 kbps) | 6 a 30s (1/e 63%)   | [7,22R$](https://www.makerhero.com/produto/sensor-de-umidade-e-temperatura-dht11/)                                                                                                              |
+| **DHT22**     | 0 a 100   | ±2,0% / ±5,0%        | 0,1%          | —                  | 4 pinos           | 40µA / 50µA     | 1.0mA / 1,5mA      | Serial (~8 kbps)  | ~2s                 | [20,90R$](https://www.eletrogate.com/sensor-de-umidade-e-temperatura-dht22-am2302?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)                                        |
+| **AHT25**     | 0 a 100   | ±2,0% / ±6,0%        | 0,024%        | < 1%/ano           | SMD 4 pinos       | 250nA           | 980µA              | I2C (100 kHz)     | 6 s (1/e 63%)       | [21,90R$](https://www.eletrogate.com/sensor-de-temperatura-e-umidade-aht25)                                                                                                                     |
+| **HTU21D**    | 0 a 100   | ±2,0% / ±5,0%        | Até 0,04%     | < 1%/ano           | DFN               | 0,02µA / 0,14µA | 450µA / 500µA      | I2C (400 kHz)     | ~50 ms (res. máx.)  | [20,82R$](https://www.usinainfo.com.br/sensor-de-umidade-arduino/sensor-de-umidade-e-temperatura-htu21d-4817.html)                                                                              |
+| **BME280**    | 0 a 100   | ±3,0% / ±3,5%        | Até 0,008%    | ±0,5%/ano          | LGA (metal-lid)   | 0,1µA / 0,3µA   | 340µA / 714µA      | I2C / SPI         | ~135 ms (I2C)       | [36,96R$](https://www.usinainfo.com.br/sensor-de-pressao-arduino/sensor-de-pressao-umidade-e-temperatura-bme280-de-alta-precisao-33v-4682.html)                                                 |
+| **AHT10**     | 0 a 100   | ±2,0% / ±5,0%        | ±3,0% / ±3,5% | < 0,5%/ano         | similar to QFN    | 0,25µA          | 25µA               | I2C (400kHz)      | < 8s (1/e 63%)      | [13,98R$](https://www.usinainfo.com.br/sensor-de-temperatura/sensor-aht10-de-alta-precisao-para-medir-temperatura-e-umidade-5691.html)                                                          |
+| **HIH-4031**  | 0 a 100   | ±3,5%                | ADC 12 bits   | ±1.2%/ano          | SMD               | —               | 200µA / 500µA      | Analógica         | 5s (1/e 63%)        | [~570,96R$](https://br.mouser.com/ProductDetail/Honeywell/HIH-4031-003?qs=yJVtgANCw03sE9P%2FDzBvRA%3D%3D)                                                                                       |
+| **HR202L**     | 20 a 95   | ±5%                  | ADC 12 bits   | ±1%/ano            | PTH               | —               | 0,2mW  (Tensão CA) | Analógica         | 20s ~ 40s (1/e 63%) | [5,13R$](https://www.makerhero.com/produto/sensor-de-umidade-hr202l-higrometro/)                                                                                                                |
+
+---
 ## Informações sobre os sensores
 
 ### SHT31-DIS - Sensor Digital de Temperatura e Umidade
@@ -557,3 +574,47 @@ Tempo de resposta:
 
 - Umidade: <8 segundos (1/e 63%)
 - Temperatura: 5 a 30 segundos (1/e 63%)
+
+### HIH-4031 - Sensor Analógico de Umidade
+
+Informações Gerais:
+- Interface: Analógica
+Umidade Relativa:
+- Faixa: 0% a 100% (máx.)
+- Precisão: ±3,5%
+- Resolução: ADC da ESP32 (12 bits)
+- Deriva de longo prazo: ±1.2%/ano
+
+Tipos de Encapsulamento:
+- **SMD**
+
+Características Elétricas:
+- Tensão de operação: 4V a 5,8V
+- Consumo de corrente (Constante):  200µA (typ.) e 500µA (máx.)
+Tempo de Resposta:
+- Umidade: 5 segundos (1/e 63%)
+
+### HR202L - Sensor Analógico de Umidade
+
+Informações Gerais:
+- Interface: Analógica
+Umidade Relativa:
+- Faixa: 20% a 95% (operacional)
+- Precisão: ±5% (typ., em 25 °C / 1 kHz / 1 VAC)
+- Resolução: ADC da ESP32 (12 bits)
+- Deriva de longo prazo: ±1%/ano
+
+Tipos de Encapsulamento:
+- **PTH**
+
+Características Elétricas:
+- Alimentação recomendada: 1 VAC (senoidal), 1 kHz
+- Tensão: 1.5 VAC (máx.)
+- Potência: 0.2 mW (máx.)
+- Frequência de operação: 500 Hz a 2 kHz
+- Faixa de variação da impedância: 19.8 kΩ – 50.2 kΩ
+Tempo de Resposta:
+- Aumento da umidade: < 20s (1/e 63%)
+- Diminuição da umidade < 40s(1/e 63%)
+
+---
