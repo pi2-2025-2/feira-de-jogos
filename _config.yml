@@ -1,4 +1,5 @@
 color-scheme: auto
+description: Feira de Jogos - Instituto Federal de Santa Catarina campus São José
 jekyll-spaceship:
   processors:
     - mermaid-processor
