@@ -32,5 +32,10 @@
     "typescript-eslint": "^8.34.1"
   },
   "name": "feira-de-jogos",
+  "scripts": {
+    "doc-install": "bundle install",
+    "doc-build": "jekyll build",
+    "doc-serve": "bundle exec jekyll serve --livereload"
+  },
   "type": "module"
 }
