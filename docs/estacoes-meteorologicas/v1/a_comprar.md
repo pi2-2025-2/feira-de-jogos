@@ -14,6 +14,10 @@
 - 1x [AHT10](https://www.eletrogate.com/modulo-sensor-de-temperatura-e-umidade-de-alta-precisao-aht10?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)
 - 1x [DS18B20](https://www.eletrogate.com/sensor-de-temperatura-digital-ds18b20?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant)
 - 2x [HR202L](https://www.makerhero.com/produto/sensor-de-umidade-hr202l-higrometro/)
+- 2x [Cartão SD 32GB](https://www.kabum.com.br/produto/111805/cartao-de-memoria-kingston-canvas-select-plus-microsd-32gb-classe-10-com-adaptador-cameras-automaticas-dispositivos-android-sdcs2-32gb)
 
 **Os sensores `SHT85`, `SHT35-DIS` e `SHT31-DIS` são sensores bem parecidos em termos de especificações, além mais caros por causa de sua alta precisão.**
+
 **A unidade do DS18B20 que eu tenho é no encapsulamento a prova d'água**
+
+**Adicionei 2 cartões SD para deixar um para a V2**
