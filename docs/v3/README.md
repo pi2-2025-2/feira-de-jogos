@@ -40,41 +40,55 @@ De acordo com [#5](https://github.com/feira-de-jogos/feira-de-jogos/issues/5), [
 
 ```mermaid
 flowchart LR
-  A[Aplicação Web]
 
-  subgraph Nuvem
-    B[Proxy HTTP]
+subgraph Usuário
+  A[Cliente Web]
+  B[Estação Meteorológica]
+end
 
+subgraph Nuvem
+  C[Proxy HTTP]
+
+  subgraph Estações Meteorológicas
+    D[Broker MQTT]
+    F[Assinante]
+    J[Grafana]
+  end
+
+  subgraph Feira de Jogos
     subgraph Cluster Node.js + Socket.IO
-      C1[1]
-      C2[2]
-      C3[...]
-      C4[N]
+      G[1, 2, ..., N]
     end
 
-    E[Grafana]
-
-    subgraph Bancos de Dados
-    D[Redis Streams]
-      F[InfluxDB]
+    subgraph Servidores dos Jogos
+      I[1, 2, ..., N]
     end
   end
 
-  A --> B
-  B --> C1
-  B --> C2
-  B --> C3
-  C1 --> D
-  C2 --> D
-  C3 --> D
-  C4 --> D
+  subgraph Bancos de Dados
+    H[Redis]
+    E[TSDB]
+  end
+end
 
-  B--> E
-  C1 --> F
-  C2 --> F
-  C3 --> F
-  C4 --> F
-  E --> F
+A --> |HTTPS| C
+B --> |WebSockets| C
+B --> |MQTT| D
+
+C --> D
+D --> F
+F --> E
+
+C ==> G
+G ==> H
+
+C ==> I
+I ==> H
+
+C --> J
+J --> E
+
+I ==> E
 ```
 
 ## Desenvolvimento dos jogos
