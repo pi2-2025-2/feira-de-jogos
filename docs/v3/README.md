@@ -42,7 +42,7 @@ De acordo com [#5](https://github.com/feira-de-jogos/feira-de-jogos/issues/5), [
 flowchart LR
 
 subgraph Usuário
-  A[Cliente Web]
+  A[Frontend]
   B[Estação Meteorológica]
 end
 
@@ -55,13 +55,15 @@ subgraph Nuvem
     J[Grafana]
   end
 
-  subgraph Feira de Jogos
-    subgraph Cluster Node.js + Socket.IO
-      G[1, 2, ..., N]
-    end
+  subgraph Backend
+    subgraph Feira de Jogos
+      subgraph Cluster Node.js + Socket.IO
+        G[1, 2, ..., N]
+      end
 
-    subgraph Servidores dos Jogos
-      I[1, 2, ..., N]
+      subgraph Servidores dos Jogos
+        I[1, 2, ..., N]
+      end
     end
   end
 
@@ -90,6 +92,57 @@ J --> E
 
 I ==> E
 ```
+
+Em termos de mensagens, um exemplo é o de entrada em um jogo com sessão válida a partir do *backend* da feira de jogos:
+
+
+```mermaid
+sequenceDiagram
+  actor Usuário
+  participant Frontend
+  participant Backend da Feira
+  participant Backend do Jogo
+  participant Redis
+  participant Google
+
+  Usuário -->> Frontend: Clica em "Login com Google"
+
+  Frontend ->> Google: Redireciona para Google OAuth
+  activate Google
+
+  Google ->> Usuário: Apresenta tela de consentimento
+  activate Usuário
+
+  Usuário ->> Google: Aprova solicitação
+  deactivate Usuário
+
+  Google ->> Frontend: Retorna JWT
+  deactivate Google
+
+  Frontend ->> Backend da Feira: Envia JWT
+  activate Backend da Feira
+  
+  Backend da Feira ->> Backend da Feira: valida JWT e cria cookie+sessão
+
+  Backend da Feira ->> Redis: Grava sessão
+
+  Backend da Feira ->> Frontend: Retorna cookie
+  deactivate Backend da Feira
+
+  Usuário -->> Frontend: Escolhe jogo
+
+  Frontend ->> Backend do Jogo: Solicita WebSocket com cookie
+  activate Backend do Jogo
+
+  Backend do Jogo ->> Redis: Verifica sessão
+  activate Redis
+
+  Redis ->> Backend do Jogo: Sessão válida
+  deactivate Redis
+
+  Backend do Jogo ->> Frontend: Retorna WebSocket (101)
+  deactivate Backend do Jogo
+  ```
 
 ## Desenvolvimento dos jogos
 
