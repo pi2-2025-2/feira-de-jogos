@@ -1,12 +1,14 @@
-import dht, onewire, ds18x20, network, utime
+import dht, onewire, ds18x20, network, utime, os
 from umqtt.robust import MQTTClient
-from libs import bmp280, ds3231, MQ7, MQ4, dotenv, neo6m
+from libs import bmp280, ds3231, MQ7, MQ4, dotenv, neo6m, sdcard
 from libs.gps_fix_manager import GPSFixManager
 from time import sleep, time, mktime
-from machine import Pin, I2C, ADC
+from machine import Pin, I2C, ADC, SPI
 
 i2c0 = I2C(0, scl=Pin(22), sda=Pin(21), freq=10000)
 i2c1 = I2C(1, sda=Pin(4), scl=Pin(5))
+spi = SPI(1, baudrate=1_000_000, polarity=0, phase=0, sck=Pin(18), mosi=Pin(23), miso=Pin(19))
+cs = Pin(27, Pin.OUT)
 led = Pin(2, Pin.OUT)
 led.value(0)
 sleep(1)
@@ -20,11 +22,16 @@ versao_em = '0'
 gps = neo6m.GPS(uart_id=1, baudrate=9600, tx_pin=12, rx_pin=13)
 ds18x20 = ds18x20.DS18X20(onewire.OneWire(Pin(15)))
 roms = ds18x20.scan()
-dht11 = dht.DHT11(Pin(23))
+dht11 = dht.DHT11(Pin(14))
 bmp280 = bmp280.BMP280(i2c0)
 ds3231 = ds3231.DS3231(i2c=i2c1)
 rain = ADC(34)
 gps_manager = GPSFixManager(limite_metros=500, tentativas=3)
+sd = sdcard.SDCard(spi, cs)
+
+vfs = os.VfsFat(sd)
+os.mount(vfs, "/sd")
+print(os.listdir("/sd"))
 
 dados = {}
 
@@ -71,6 +78,20 @@ def espera_gps(timeout_ms=60000):
         print('erro mqtt debug GPS')
     print("Sem fix GPS após timeout.")
     return {'latitude': 0.0, 'longitude': 0.0, 'altitude': 0.0}
+
+def bmp280_ler():
+    try:
+        temp = bmp280.get_temperature()
+        press = bmp280.get_pressure() / 100
+        return temp, press
+    except Exception as e:
+        try:
+            msg_erro = 'erro leitura bmp280: ' + str(e)
+            client.publish(topico_debug, msg_erro)
+        except:
+            print('erro mqtt debug')
+        print(msg_erro)
+
 
 def ds18b20_ler():
     try:
@@ -122,7 +143,7 @@ def formatar(ts_ns):
     return data
 
 gps_data = gps_manager.carregar_fix() 
-fix_novo = gps_manager.pegar_fix_valido(espera_gps)
+fix_novo = gps_manager.pegar_fix_consistente(espera_gps)
 
 if fix_novo and gps_manager.distancia_metros(
     float(gps_data["latitude"]), float(gps_data["longitude"]),
@@ -149,8 +170,8 @@ while True:
     dados["umid.dht11"] = dht11.humidity()
     
     print('lendo bmp280')
-    dados["temp.bmp280"] = bmp280.get_temperature()
-    dados["press.bmp280"] = bmp280.get_pressure() / 100
+    dados['temp.bmp280'], dados['press.bmp280'] = bmp280_ler()
+    
     
     print('lendo ds18b20')
     dados ['temp.ds18b20'] = ds18b20_ler() 
@@ -184,11 +205,16 @@ while True:
     else:
         print('cliente MQTT não está disponível')
 
-
+    try:
+        with open('/sd/data.txt', "a") as f:  
+            f.write(data + "\n")       
+        print('dados gravados no sd com sucesso')
+    except Exception as e:
+        print("Erro ao gravar no SD:", e)
+        
     print(data)
 
     if tempo_execucao < 60:
         sleep(60 - tempo_execucao)
     else:
         print('Tempo de execução excedido: ' + str(tempo_execucao))
-

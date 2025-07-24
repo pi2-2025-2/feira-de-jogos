@@ -45,12 +45,61 @@ class GPSFixManager:
         except:
             return False
 
-    def pegar_fix_valido(self, gps_data_func):
-        for _ in range(self.tentativas):
+    def pegar_fix_consistente(self, gps_data_func):
+        fixes = []
+        tentativas_restantes = self.tentativas * 3  # ou mais para garantir pegar 3 fixes válidos
+        
+        while len(fixes) < 3 and tentativas_restantes > 0:
             fix = gps_data_func()
             if self.fix_valido(fix):
-                return fix
-        return None
+                fixes.append(fix)
+            tentativas_restantes -= 1
+        
+        if len(fixes) < 3:
+            # Se não conseguiu 3 fixes válidos, devolve o melhor que tem ou None
+            if fixes:
+                return fixes[0]
+            return None
+        
+        # Agora temos 3 fixes válidos, vamos escolher o mais consistente
+        
+        # Função pra calcular distância entre dois fixes
+        def dist(f1, f2):
+            return self.distancia_metros(float(f1["latitude"]), float(f1["longitude"]),
+                                        float(f2["latitude"]), float(f2["longitude"]))
+        
+        # Calcula distâncias entre cada par
+        d01 = dist(fixes[0], fixes[1])
+        d12 = dist(fixes[1], fixes[2])
+        d02 = dist(fixes[0], fixes[2])
+        
+        # Se um fix estiver longe dos outros dois, descartamos ele e escolhemos o mais próximo entre os outros dois
+        # Caso contrário, escolhemos o fix do meio (mediana) — nesse caso o que tem a menor soma das distâncias
+        if d01 > self.limite_metros and d02 > self.limite_metros:
+            # fix 0 está longe dos outros dois, escolhe entre fix 1 e 2
+            soma_12 = d12
+            return fixes[1] if soma_12 < d12 else fixes[2]
+        if d01 > self.limite_metros and d12 > self.limite_metros:
+            # fix 1 está longe, escolhe entre fix 0 e 2
+            soma_02 = d02
+            return fixes[0] if soma_02 < d02 else fixes[2]
+        if d12 > self.limite_metros and d02 > self.limite_metros:
+            # fix 2 está longe, escolhe entre fix 0 e 1
+            soma_01 = d01
+            return fixes[0] if soma_01 < d01 else fixes[1]
+        
+        # Se todos próximos, escolhe o fix que tem a menor soma das distâncias para os outros dois (mais "central")
+        soma_distancias = []
+        for i in range(3):
+            soma = 0
+            for j in range(3):
+                if i != j:
+                    soma += dist(fixes[i], fixes[j])
+            soma_distancias.append((soma, fixes[i]))
+        
+        soma_distancias.sort(key=lambda x: x[0])
+        return soma_distancias[0][1]
+
 
     def atualizar_fix(self, gps_data):
         if not self.fix_valido(gps_data):
@@ -75,4 +124,3 @@ class GPSFixManager:
         else:
             print(f"Mudança menor que {self.limite_metros} metros ({distancia:.2f} m). Fix mantido.")
             return False
-

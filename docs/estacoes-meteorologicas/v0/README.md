@@ -45,15 +45,14 @@ As variáveis são os valores a serem armazenados em séries tempoarais:
 | 6º| `mq7_co`| ppm| Concentração de monóxido de carbono (CO) detectada  |
 | 7º| `mq4_ch4`| ppm| Concentração de metano, Gás Natural ou GLP detectada   |
 | 8º| `sensor_chuva`| sem unidade |Detecção de água no sensor de chuva|
-|X|`timestamp`|ns|Timestamp UNIX em ns medindo o tempo no momento da leitura|
+|X|`timestamp`|ns|Timestamp UNIX em nanossegundos medindo o tempo no momento da leitura (Enviado em relação à hora GMT)|
 
 Observações:
 
 - Os dados são enviados via MQTT para o *broker* da feira de jogos.
 - A versão `0` já está operacional.
-- O GPS instalado fornece dados de altitude, longitude e latitude **que não são totalmente confiáveis**.
-- Os dados de GPS só são atualizados caso haja mudança de mais de 500m, e são armazenados em arquivo JSON.
-- Os dados sensíveis marcados no código com `dotenv.` são armazenados no arquivo `config.env`.
+- O GPS instalado fornece dados de altitude, longitude e latitude que são checadas 3 vezes pelo mesmo na inicialização. Os dados de GPS só são atualizados caso haja mudança de mais de 500m, e são armazenados em arquivo `fix.json`.
+- Os dados sensíveis marcados no código com `dotenv.` são armazenados no arquivo `config.env`. São eles: credenciais do Wi-Fi e informações do *broker* MQTT.
 - Para identificação das mensagens enviadas e das estações ativas será usado o sistema de `UUIDs`:
   - `fa875d3f-d1ef-4c27-b774-b41c69d70608` - **1ª estação V0**.
 
