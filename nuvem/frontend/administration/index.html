@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Administrativo - Feira de Jogos</title>
+  <link rel="shortcut icon" href="FaviconAdm.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Sign-In -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Painel Administrativo</h1>
+
+    <div id="login-section">
+      <div id="g_id_onload"
+           data-client_id="331191695151-ku8mdhd76pc2k36itas8lm722krn0u64.apps.googleusercontent.com"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+
+      <div class="g_id_signin"
+           data-type="standard"
+           data-size="large"
+           data-theme="outline"
+           data-text="sign_in_with"
+           data-shape="rectangular"
+           data-logo_alignment="left">
+      </div>
+    </div>
+
+    <div id="data-section" style="display: none;">
+      <h2>Compras Não Finalizadas</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>De</th>
+                <th>Para</th>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+          <tbody id="purchases-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

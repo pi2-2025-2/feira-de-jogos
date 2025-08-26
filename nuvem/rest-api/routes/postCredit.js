@@ -56,13 +56,13 @@ router.post("/credit", async (req, res) => {
       return res.sendStatus(402);
     }
 
-    // Max value is 1000
-    if (value > 1000) {
+    // Max value is 3000
+    if (value > 3000) {
       return res.sendStatus(403);
     }
 
     const lastOperations = await db.query(
-      'SELECT EXTRACT(EPOCH FROM (NOW() - "date")) AS "seconds_elapsed" FROM "operations" WHERE "to" = $1 AND "product" = $2 AND "date" >= NOW() - INTERVAL \'4 hours\' ORDER BY "date" DESC LIMIT 1;',
+      'SELECT EXTRACT(EPOCH FROM (NOW() - "date")) AS "seconds_elapsed" FROM "operations" WHERE "to" = $1 AND "product" = $2 AND "date" >= NOW() - INTERVAL \'1 minute\' ORDER BY "date" DESC LIMIT 1;',
       [userId, product],
     );
     if (lastOperations.rowCount !== 0) {

@@ -101,38 +101,38 @@ router.post("/debit", async (req, res) => {
         return res.status(403).send("Produto Fora de Estoque");
       }
 
-      await db.query('UPDATE "machines" SET "busy" = true WHERE "id" = $1 ', [
-        machine,
-      ]);
+      // await db.query('UPDATE "machines" SET "busy" = true WHERE "id" = $1 ', [
+      //   machine,
+      // ]);
 
       mfa = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
       const insertResult = await db.query(
-        'INSERT INTO "operations"("from", "to", "product", "value", "date", "mfa", "completed") VALUES($1, 1, $2, $3, NOW(), $4, false) RETURNING "id"',
+        'INSERT INTO "operations"("from", "to", "product", "value", "date", "mfa", "completed") VALUES($1, 1, $2, $3, NOW(), $4, true) RETURNING "id"',
         [userId, product, productValue, mfa],
       );
       var operationId = insertResult.rows[0].id;
 
-      let userName = await db.query(
-        'SELECT "name" FROM "people" WHERE "email" = $1 ',
-        [email],
-      );
-      userName = userName.rows[0].name;
-      let stateMfaObject = {
-        username: userName,
-        code: mfa,
-        operation: operationId,
-      };
+      // let userName = await db.query(
+      //   'SELECT "name" FROM "people" WHERE "email" = $1 ',
+      //   [email],
+      // );
+      // userName = userName.rows[0].name;
+      // let stateMfaObject = {
+      //   username: userName,
+      //   code: mfa,
+      //   operation: operationId,
+      // };
 
-      ioMachine.of("/vending-machine").emit("stateMFA", stateMfaObject);
-      setTimeout(() => {
-        db.query('UPDATE "machines" SET "busy" = false WHERE "id" = $1', [
-          machine,
-        ]),
-          30000;
-      });
+      // ioMachine.of("/vending-machine").emit("stateMFA", stateMfaObject);
+      // setTimeout(() => {
+      //   db.query('UPDATE "machines" SET "busy" = false WHERE "id" = $1', [
+      //     machine,
+      //   ]),
+      //     30000;
+      // });
     } else if (typeSearch.rows[0].name == "arcade") {
       const insertResult = await db.query(
-        'INSERT INTO "operations"("from", "to", "product", "value", "date", "completed") VALUES($1, 1, $2, $3, NOW(), false) RETURNING "id"',
+        'INSERT INTO "operations"("from", "to", "product", "value", "date", "completed") VALUES($1, 1, $2, $3, NOW(), true) RETURNING "id"',
         [userId, product, productValue],
       );
       var operationId = insertResult.rows[0].id;

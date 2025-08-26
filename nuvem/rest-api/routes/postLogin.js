@@ -26,12 +26,12 @@ router.post("/login", async (req, res) => {
   try {
     const auth = await db.query(
       'SELECT "id" FROM "people" WHERE "email" = $1',
-      [email],
+      [email]
     );
     if (auth.rowCount === 0) {
       const insertResult = await db.query(
         'INSERT INTO "people"("name", "email") VALUES ($1, $2) RETURNING "id"',
-        [name, email],
+        [name, email]
       );
       const userId = insertResult.rows[0].id;
 
