@@ -1,0 +1,33 @@
+{
+  "name": "Pinball et Circensis",
+  "short_name": "pinball",
+  "lang": "pt-BR",
+  "id": "./index.html",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/png/favicon/128.png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "./assets/png/favicon/192.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./assets/png/favicon/256.png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./assets/png/favicon/384.png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "./assets/png/favicon/512.png",
+      "sizes": "512x512"
+    }
+  ]
+}
