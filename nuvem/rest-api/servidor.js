@@ -1,6 +1,10 @@
 require("dotenv").config();
 const { app, httpServer } = require("./http-server.js");
+const path = require("path");
 const port = process.env.PORT || 3000;
+
+
+app.use("/dashboard", require("express").static(path.join(__dirname, "public")));
 
 const postLogin = require("./routes/postLogin");
 const postTransfer = require("./routes/postTransfer");
@@ -30,6 +34,6 @@ require("./ws-namespaces/default.js");
 require("./ws-namespaces/vending-machine.js");
 require("./ws-namespaces/arcade.js");
 
-httpServer.listen(port, () => {
-  console.log("Server running!");
+httpServer.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on port ${port}!`);
 });
