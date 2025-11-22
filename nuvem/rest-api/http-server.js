@@ -40,4 +40,14 @@ app.get("/admin", (req, res) => {
     );
 });
 
-module.exports = { app, httpServer, ioGame, ioMachine };
+const mqttClient = mqtt.connect("mqtt://mqtt-broker:1883");
+
+mqttClient.on("connect", () => {
+  console.log("MQTT conectado ao broker mqtt-broker:1883");
+});
+
+mqttClient.on("error", (err) => {
+  console.error("Erro MQTT:", err);
+});
+
+module.exports = { app, httpServer, ioGame, ioMachine, mqttClient };

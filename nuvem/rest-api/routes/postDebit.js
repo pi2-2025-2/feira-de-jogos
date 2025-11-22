@@ -1,4 +1,4 @@
-const { ioMachine } = require("../http-server.js");
+const { ioMachine, mqttClient } = require("../http-server.js");
 const express = require("express");
 const router = express.Router();
 const { OAuth2Client } = require("google-auth-library");
@@ -130,6 +130,19 @@ router.post("/debit", async (req, res) => {
       //   ]),
       //     30000;
       // });
+      
+      const slot = stockSearch.rows[0].slot;
+      const topic = "vending-machine/0/command";
+      const message = JSON.stringify({
+        product: slot
+      });
+
+      mqttClient.publish(topic, message, { qos: 0 }, (err) => {
+        if (err) {
+          console.error("Erro ao publicar MQTT:", err);
+        }
+      });
+
     } else if (typeSearch.rows[0].name == "arcade") {
       const insertResult = await db.query(
         'INSERT INTO "operations"("from", "to", "product", "value", "date", "completed") VALUES($1, 1, $2, $3, NOW(), true) RETURNING "id"',
