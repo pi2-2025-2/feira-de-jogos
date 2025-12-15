@@ -1,0 +1,4 @@
+Largura inicial: 56,726 mm
+Distância encaixe do braco: 77,550 mm
+Braço: Distância encaixe do braço + 30 cm
+Diametro botão: 2,8 cm
